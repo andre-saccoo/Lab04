@@ -19,10 +19,18 @@ class Cabina:
                f"Ponte nave: {self._ponteNave}"\
                f"prezzo: {self._prezzo}"
 
-    class Cabina_deluxe(Cabina):
-        def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, tipologia):
-            super.__init__(codiceCabina, numeriPosti, ponteNave, prezzo, disponibile)
-            self._tipologia=tipologia
+class Cabina_deluxe(Cabina):
+    def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, tipologia):
+        super().__init__(codiceCabina, numeriPosti, ponteNave, prezzo)
+        self._tipologia=tipologia
 
-            def sovrapprezzo (self, prezzo):
-                return self.prezzo * 1.2
+    def sovrapprezzo (self):
+        return self._prezzo * 1.2
+
+class Cabina_animale(Cabina):
+    def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, numeroAnimal):
+        super().__init__(codiceCabina, numeriPosti, ponteNave, prezzo)
+        self.numeroAnimali=numeroAnimal
+
+    def sovrapprezzo (self):
+        return self._prezzo * (1+0.1*self.numeroAnimali)
