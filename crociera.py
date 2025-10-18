@@ -1,4 +1,6 @@
 import  csv
+from passeggero import Passeggero
+from cabina import Cabina
 
 class Crociera:
     def __init__(self, nome):
@@ -11,22 +13,29 @@ class Crociera:
         def nome(self, nome):
             self._nome = nome
 
-
     def carica_file_dati(self, file_path):
         try:
-            with open(file_path) as csv_file:
-                for row in csv_file:
-                    row = csv.Reader(csv_file)
-                    print(row)
+            infile=open(file_path)
+            reader = csv.reader(infile)
+            for row in reader:
+                print(row)
+                id= row[0].upper()
+                if len(row)==3 and id.startswith("P"):
+                    id, nome, cognome= Passeggero
+                    print(f"questa è un passeggero {row}")
+                if len(row)==4:
+                    print(f"questa è una cabina semplice {row}")
+                if len(row)==5:
+                    try:
+                        int(row[4])
+                        print(f"questa è una cabina per animali{row}")
+                    except ValueError:
+                        print(f"questa è una cabina deluxe {row}")
+            infile.close()
         except FileNotFoundError:
             print("File not found")
 
 
-
-
-
-
-        # TODO
 
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
         """Associa una cabina a un passeggero"""
