@@ -1,13 +1,31 @@
+import  csv
+
 class Crociera:
     def __init__(self, nome):
-        """Inizializza gli attributi e le strutture dati"""
-        # TODO
+        self.nome=nome
 
-    """Aggiungere setter e getter se necessari"""
-    # TODO
+        @property
+        def nome(self):
+            return self._nome
+        @nome.setter
+        def nome(self, nome):
+            self._nome = nome
+
 
     def carica_file_dati(self, file_path):
-        """Carica i dati (cabine e passeggeri) dal file"""
+        try:
+            with open(file_path) as csv_file:
+                csv_reader = csv.DictReader(csv_file)
+                for row in csv_reader:
+                    print(row)
+        except FileNotFoundError:
+            print("File not found")
+
+
+
+
+
+
         # TODO
 
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
