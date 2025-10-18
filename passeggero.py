@@ -3,5 +3,6 @@ class Passeggero():
         self.codice = codice
         self.nome = nome
         self.cognome = cognome
+        self.cabina = None
     def __str__(self):
         return f"codice: {self.codice}\n nome: {self.nome}\n cognome: {self.cognome}"

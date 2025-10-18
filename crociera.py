@@ -11,6 +11,7 @@ class Crociera:
         self.dizionarioPasseggeri=dict()
         self.listaCabine=[]
         self.dizionarioCabina=dict()
+        self.passeggero= None
 
 #definisco il metodo setter e getter per poter leggere i dati della nave
         @property
@@ -73,14 +74,29 @@ class Crociera:
                         self.dizionarioCabina[id] = cabinaDeluxe
             infile.close()
         except FileNotFoundError:
-            print("File not found")
+            print(" File not found ")
         for id, cabina in self.dizionarioCabina.items():
             print(cabina)
 
 
+
+
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
-        """Associa una cabina a un passeggero"""
-        # TODO
+        if codice_cabina not in self.dizionarioCabina:
+            raise ValueError (" la cabina richiesta non esiste nel sistema")
+        if codice_passeggero in self.dizionarioPasseggeri:
+            raise ValueError (" il passeggero non esiste nel sistema")
+
+        cabina=self.dizionarioCabina[codice_cabina]
+        passeggero=self.dizionarioPasseggeri[codice_passeggero]
+
+        if cabina.disponibile == False:
+            print(" la cabina richiesta non è disponibile ")
+        else:
+            cabina.passeggero=passeggero
+            passeggero.cabina=cabina
+            cabina.disponibile=False
+
 
     def cabine_ordinate_per_prezzo(self):
         """Restituisce la lista ordinata delle cabine in base al prezzo"""
