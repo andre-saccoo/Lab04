@@ -15,8 +15,8 @@ class Crociera:
     def carica_file_dati(self, file_path):
         try:
             with open(file_path) as csv_file:
-                csv_reader = csv.DictReader(csv_file)
-                for row in csv_reader:
+                for row in csv_file:
+                    row = csv.Reader(csv_file)
                     print(row)
         except FileNotFoundError:
             print("File not found")
