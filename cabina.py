@@ -14,10 +14,7 @@ class Cabina:
         self._disponibile=disponibile
 
     def __str__(self):
-        return f"Codice cabina: {self._codiceCabina}\n" \
-               f"numero posti: {self._numeroPosti}\n"\ 
-               f"Ponte nave: {self._ponteNave}"\
-               f"prezzo: {self._prezzo}"
+        return f"Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n prezzo: {self._prezzo}"
 
 class Cabina_deluxe(Cabina):
     def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, tipologia):
@@ -25,7 +22,14 @@ class Cabina_deluxe(Cabina):
         self._tipologia=tipologia
 
     def sovrapprezzo (self):
-        return self._prezzo * 1.2
+        try:
+            sovrapprezzo=float(self._prezzo) * 1.2
+            return sovrapprezzo
+        except ValueError:
+            return float("errore")
+
+    def __str__(self):
+        return f"{super().__str__()}\n tipologia: {self._tipologia}\n Prezzo finale: {self.sovrapprezzo()}"
 
 class Cabina_animale(Cabina):
     def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, numeroAnimal):
@@ -33,4 +37,11 @@ class Cabina_animale(Cabina):
         self.numeroAnimali=numeroAnimal
 
     def sovrapprezzo (self):
-        return self._prezzo * (1+0.1*self.numeroAnimali)
+        try:
+            sovrapprezzo=float(self._prezzo) * (1+ (0.1 * int(self.numeroAnimali)))
+            return sovrapprezzo
+        except ValueError:
+            return float("errore")
+
+    def __str__(self):
+        return f"{super().__str__()}\n Max animali: {self.numeroAnimali}\nPrezzo finale: {self.sovrapprezzo()}"
