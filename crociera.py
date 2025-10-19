@@ -102,8 +102,11 @@ class Crociera:
             else :
                 print(" Non sono cabine nel sistema")
 
-
+#la stampo normalmente se presente la cabina aggiornata viene aggiunta dall'if nel __str__
     def elenca_passeggeri(self):
-        """Stampa l'elenco dei passeggeri mostrando, per ognuno, la cabina a cui è associato, quando applicabile """
-        # TODO
+        if len(self.listaPasseggeri)==0:
+            print('non ci sono passeggeri a bordo')
+        else:
+            for p in self.listaPasseggeri:
+                print(p)
 
