@@ -11,15 +11,14 @@ class Crociera:
         self.dizionarioPasseggeri=dict()
         self.listaCabine=[]
         self.dizionarioCabina=dict()
-        self.passeggero= None
 
 #definisco il metodo setter e getter per poter leggere i dati della nave
-        @property
-        def nome (self):
-            return self._nome
-        @nome.setter
-        def nome(self, nome):
-            self._nome = nome
+    @property
+    def nome (self):
+        return self._nome
+    @nome.setter
+    def nome(self, nome):
+        self._nome = nome
 
 # funzione che prova ad aprire il file, per ogni riga controlla la lunghezza
 # se la lunghezza della riga è 3 sto leggendo un passeggero, controllo non sia già presente nel dizionario dedicato
@@ -84,7 +83,7 @@ class Crociera:
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
         if codice_cabina not in self.dizionarioCabina:
             raise ValueError (" la cabina richiesta non esiste nel sistema")
-        if codice_passeggero in self.dizionarioPasseggeri:
+        if codice_passeggero not in self.dizionarioPasseggeri:
             raise ValueError (" il passeggero non esiste nel sistema")
 
         cabina=self.dizionarioCabina[codice_cabina]
@@ -99,8 +98,8 @@ class Crociera:
 
 
     def cabine_ordinate_per_prezzo(self):
-        """Restituisce la lista ordinata delle cabine in base al prezzo"""
-        # TODO
+        self.listaCabine.sort(key=lambda cabina: cabina.prezzo)
+        print(self.listaCabine)
 
 
     def elenca_passeggeri(self):

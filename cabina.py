@@ -5,6 +5,7 @@ class Cabina:
         self._ponteNave=ponteNave
         self._prezzo=prezzo
         self._disponibile=True
+        self.passeggero=None
 
     @property
     def disponibile(self):
@@ -13,8 +14,21 @@ class Cabina:
     def disponibile(self,disponibile):
         self._disponibile=disponibile
 
+    @property
+    def passeggero(self):
+        return self.passeggero
+    @passeggero.setter
+    def passeggero(self,passeggero):
+        self.passeggero=passeggero
+
     def __str__(self):
         return f"Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n prezzo: {self._prezzo} €"
+
+    def __eq__(self, other):
+        return self._codiceCabina == other.codiceCabina
+
+    def __lt__(self, other):
+        return self._prezzo < other.prezzo
 
 class Cabina_deluxe(Cabina):
     def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, tipologia):
