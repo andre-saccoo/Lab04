@@ -77,9 +77,6 @@ class Crociera:
         for id, cabina in self.dizionarioCabina.items():
             print(cabina)
 
-
-
-
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
         if codice_cabina not in self.dizionarioCabina:
             raise ValueError (" la cabina richiesta non esiste nel sistema")
