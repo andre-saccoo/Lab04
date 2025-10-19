@@ -32,9 +32,11 @@ def main():
 
         elif scelta == "3":
             codice_cabina = input("Codice cabina: ")
+            codiceCabina=codice_cabina.upper()
             codice_passeggero = input("Codice passeggero: ")
+            codicePasseggero = codice_passeggero.upper()
             try:
-                crociera.assegna_passeggero_a_cabina(codice_cabina, codice_passeggero)
+                crociera.assegna_passeggero_a_cabina(codiceCabina, codicePasseggero)
                 print("Cabina assegnata con successo.")
             except Exception as e:
                 print(f"Errore: {e}")
