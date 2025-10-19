@@ -95,8 +95,12 @@ class Crociera:
 
 
     def cabine_ordinate_per_prezzo(self):
-        self.listaCabine.sort(key=lambda cabina: cabina.prezzo)
-        print(self.listaCabine)
+            if len(self.listaCabine)>0:
+                cabineOrdinate = sorted(self.listaCabine, key=lambda c: c.prezzoFinale())
+                for c in cabineOrdinate:
+                    print(c)
+            else :
+                print(" Non sono cabine nel sistema")
 
 
     def elenca_passeggeri(self):

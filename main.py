@@ -40,10 +40,9 @@ def main():
                 print(f"Errore: {e}")
 
         elif scelta == "4":
-            cabine_ordinate = crociera.cabine_ordinate_per_prezzo()
+            crociera.cabine_ordinate_per_prezzo()
             print("\n--- Cabine ordinate per prezzo ---")
-            for c in cabine_ordinate:
-                print(c)
+
 
         elif scelta == "5":
             print("\n--- Elenco passeggeri ---")

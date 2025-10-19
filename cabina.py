@@ -5,7 +5,10 @@ class Cabina:
         self._ponteNave=ponteNave
         self._prezzo=prezzo
         self._disponibile=True
-        self.passeggero=None
+        self._passeggero=None
+
+    def prezzoFinale(self):
+        return int(self._prezzo)
 
     @property
     def disponibile(self):
@@ -16,13 +19,13 @@ class Cabina:
 
     @property
     def passeggero(self):
-        return self.passeggero
+        return self._passeggero
     @passeggero.setter
-    def passeggero(self,passeggero):
-        self.passeggero=passeggero
+    def passeggero(self,valore):
+        self._passeggero = valore
 
     def __str__(self):
-        return f"Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n prezzo: {self._prezzo} €"
+        return f"Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n prezzo: {self._prezzo} € \n"
 
     def __eq__(self, other):
         return self._codiceCabina == other.codiceCabina
@@ -39,7 +42,7 @@ class Cabina_deluxe(Cabina):
         return int(self._prezzo) * 1.2
 
     def __str__(self):
-        return f" Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n tipologia: {self._tipologia}\n Prezzo finale: {self.prezzoFinale()}"
+        return f" Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n tipologia: {self._tipologia}\n Prezzo finale: {self.prezzoFinale()}\n"
 
 class Cabina_animale(Cabina):
     def __init__(self, codiceCabina, numeriPosti, ponteNave, prezzo, numeroAnimal):
@@ -50,4 +53,4 @@ class Cabina_animale(Cabina):
         return int(self._prezzo) * (1+ (0.1* int(self.numeroAnimali)))
 
     def __str__(self):
-        return f" Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n  Max animali: {self.numeroAnimali}\n Prezzo finale: {self.prezzoFinale()}"
+        return f" Codice cabina: {self._codiceCabina}\n numero posti: {self._numeroPosti}\n Ponte nave: {self._ponteNave}\n  Max animali: {self.numeroAnimali}\n Prezzo finale: {self.prezzoFinale()}\n"
